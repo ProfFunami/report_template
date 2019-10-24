@@ -1,31 +1,25 @@
-################################################################################
-# Makefile for MacOS 10.9                                                      #
-################################################################################
+MAKE			= make
+LATEXMK			= latexmk
 
-TEX = platex
-BIBTEX = pbibtex
-DVIPDF = dvipdfmx
-PREVIEW = open -a preview
+LATEXMKFLAG	   += -halt-on-error -lualatex
 
-BIB = main.bib
-SRC = main.tex
-MAIN= $(SRC:.tex=)
-DVI = $(SRC:.tex=.dvi)
-PDF = $(SRC:.tex=.pdf)
+CP				= cp
+RM				= rm
 
-all: runpdf
+SRC				= main
 
-dvi:
-	$(TEX) $(MAIN)
-	# $(BIBTEX) $(MAIN)
-	# $(TEX) $(MAIN)
-	$(TEX) $(MAIN)
+TARGET			= $(addsuffix .pdf $(SRC))
 
-pdf: dvi
-	$(DVIPDF) -p a4 $(DVI)
+.PHONY: all continue clean
 
-runpdf: pdf
-	$(PREVIEW) $(PDF)
+all: $(SRC).pdf
+
+%.pdf: %.tex
+	$(LATEXMK) $(LATEXMKFLAG) $<
+
+continue: LATEXMKFLAG += -pvc
+continue: all
 
 clean:
 	rm -f *.bbl *.blg *.aux *.log *.dvi
+
