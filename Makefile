@@ -17,7 +17,7 @@ all: $(SRC).pdf
 %.pdf: %.tex
 	$(LATEXMK) $(LATEXMKFLAG) $<
 
-continue: LATEXMKFLAG += -pvc
+continue: LATEXMKFLAG += -pvc -synctex=1
 continue: all
 
 clean:

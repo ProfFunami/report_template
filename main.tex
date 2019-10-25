@@ -1,11 +1,34 @@
-\documentclass[a4j]{ltjsarticle}
+\documentclass{jlreq}
 
-\usepackage{luatexja-fontspec}
-\usepackage[sourcehan]{luatexja-preset}
+%% 日本語対応
+\usepackage{luatexja}
+
+%% フォント設定
+\usepackage[no-math,match]{luatexja-fontspec}
+% 欧文フォント
+\setmainfont{Source Serif Pro Regular}
+\setsansfont{Source Sans Pro}
+% 和文フォント
+\setmainjfont[YokoFeatures={JFM=prop}]{SourceHanSerif-Regular}
+\setsansjfont[YokoFeatures={JFM=prop}]{SourceHanSans-Regular}
+
+%% ルビの設定
+\usepackage{luatexja-ruby}
+
+%% 参照やハイパーリンクの設定
+\usepackage{hyperref}
+\hypersetup{
+  luatex,
+  bookmarks=true,
+  bookmarksnumbered=true,
+  colorlinks=false,
+  hypertexnames=false,
+  unicode,
+  hidelinks
+}
+
+%% ここからソースコードの表示に関する設定
 \usepackage{listings}
-\usepackage{amsmath,color}
-
-% ここからソースコードの表示に関する設定
 \lstset{
   basicstyle=\small\ttfamily,
   identifierstyle=\small,
@@ -25,19 +48,21 @@
 \renewcommand{\lstlistingname}{ソースコード} % キャプション名の変更
 % ここまでソースコードの表示に関する設定
 
+\usepackage{amsmath,color}
+
 \title{レポート課題}
-\author{学籍番号：201899999\\氏名：情報太郎}
+\author{学籍番号：201899999\\氏名：\ruby{情報太郎}{じょうほうたろう}}
 \date{提出日：\today}
 
 \begin{document}
 
 \maketitle
 
-\section{課題}
+\section{ソースコード}
 
-Hello Worldのソースコードを、ソースコード\ref{chello}に示す。
+Hello Worldのソースコードを、ソースコード\ref{c-hello}に示す。
 
-\begin{lstlisting}[language=c,caption=C言語でHello World,label=chello]
+\begin{lstlisting}[language=c,caption=C言語でHello World,label=c-hello]
 #include <stdio.h>
 int main(){
     printf("Hello world!");
