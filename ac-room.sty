@@ -1,0 +1,80 @@
+\usepackage{lipsum}
+%% 日本語対応
+\usepackage{luatexja}
+
+%% フォント設定
+\usepackage[no-math,match]{luatexja-fontspec}
+% 欧文フォント
+\setmainfont{Source Serif Pro}
+\setsansfont{Source Sans Pro}
+% 和文フォント
+\setmainjfont[YokoFeatures={JFM=prop}]{IPAexMincho}
+\setsansjfont[YokoFeatures={JFM=prop}]{IPAexGothic}
+
+%% ルビの設定
+\usepackage{luatexja-ruby}
+
+%% 参照やハイパーリンクの設定
+\usepackage{hyperref}
+\hypersetup{
+  luatex,
+  bookmarks=true,
+  bookmarksnumbered=true,
+  colorlinks=false,
+  hypertexnames=false,
+  unicode,
+  hidelinks
+}
+
+%% ここからソースコードの表示に関する設定
+\usepackage{listings}
+\lstset{
+  basicstyle=\small\ttfamily,
+  identifierstyle=\small,
+%  commentstyle=\smallitshape,
+  keywordstyle=\color{red},
+  ndkeywordstyle=\small,
+  stringstyle=\color{blue},
+  tabsize=4,
+  frame={tbrl},
+  frameround={tttt},
+  breaklines=true,
+  columns=[l]{fullflexible},
+  numbers=left,
+  numbersep=5pt,
+  numberstyle=\scriptsize,
+  stepnumber=1,
+  lineskip=-0.5ex
+}
+\renewcommand{\lstlistingname}{ソースコード} % キャプション名の変更
+% ここまでソースコードの表示に関する設定
+
+\usepackage{amsmath,color} % 数学と色のよしなに
+\usepackage{abstract} % abstractのよしなに
+
+% タイトルの設定
+\makeatletter
+\newcommand{\subtitle}[1]{\def\@subtitle{#1\\}}
+\newcommand{\studentnumber}[1]{\def\@studentnumber{学籍番号：#1\\}}
+\renewcommand{\author}[1]{\def\@author{氏名：#1}}
+\renewcommand{\maketitle}{
+  \begin{titlepage}
+    \begin{center}
+      \vspace{-5em}
+      {\Large \@subtitle}
+      \vspace{0.5em}
+      {\LARGE \@title}
+    \end{center}
+    \vspace{1.5em}
+    \begin{flushright}
+      \@studentnumber
+      \@author
+    \end{flushright}
+    \vspace{2em}
+  \end{titlepage}
+}
+\makeatother
+
+% 図表
+\usepackage{graphicx}
+
