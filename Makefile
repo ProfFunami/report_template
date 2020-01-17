@@ -21,5 +21,5 @@ continue: LATEXMKFLAG += -pvc -synctex=1
 continue: all
 
 clean:
-	rm -f *.bbl *.blg *.aux *.log *.dvi *.fls *.fdb_latexmk *.ltjruby *.out *.synctex.gz
+	rm -f *.bbl *.blg *.aux *.log *.dvi *.fls *.fdb_latexmk *.ltjruby *.out *.synctex.gz *.pdf
 
