@@ -1,5 +1,7 @@
 # Report Template
 
+[update] biblatexで参考文献を追加できるようにしました．
+
 AC部屋のレポートテンプレートです．
 
 ## ビルドに必要なもの
